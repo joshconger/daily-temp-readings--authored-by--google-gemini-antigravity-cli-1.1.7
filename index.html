@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daily Temperature Reading — a playful journaling template for couples, friends, and groups based on Virginia Satir's 5-component framework.">
+  <title>Daily Temperature Reading ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header>
+      <h1>Daily Temperature Reading</h1>
+      <p id="date-display"></p>
+      <div id="focus-label"></div>
+    </header>
+
+    <section id="dtr-cards">
+      <!-- 5 DTR cards rendered by JS -->
+    </section>
+
+    <div id="copy-section">
+      <button id="copy-btn">📋 Copy Template</button>
+      <span id="copy-feedback" aria-live="polite">Copied! ✅</span>
+    </div>
+
+    <footer>
+      <p>Based on Virginia Satir's Daily Temperature Reading</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
