@@ -29,9 +29,6 @@ None — all design decisions were resolved during the `/grill-me` session.
 
 ```
 daily-temp-readings--authored-by--google-gemini-antigravity-cli-1.1.7/
-├── .ORIGINAL_CHAT.md          (existing)
-├── 01-how-to-architect-with-agy-commands.md  (existing)
-├── 02-dtr-mvp-product-spec.md (existing)
 ├── index.html                 [NEW] — Main HTML page
 ├── style.css                  [NEW] — All styles (design system + components)
 └── app.js                     [NEW] — All logic (date rotation, copy, interactions)
