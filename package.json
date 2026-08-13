@@ -1,0 +1,9 @@
+{
+  "name": "dtr-generator",
+  "version": "1.0.0",
+  "description": "Daily Temperature Reading generator",
+  "main": "app.js",
+  "dependencies": {
+    "twilio": "^4.20.1"
+  }
+}

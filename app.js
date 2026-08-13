@@ -89,20 +89,29 @@ async function copyTemplate() {
   try {
     await navigator.clipboard.writeText(template);
     const feedback = document.getElementById('copy-feedback');
-    feedback.classList.add('show');
+    feedback.textContent = 'Copied! ✅';
+    feedback.classList.add('visible');
     setTimeout(() => {
-      feedback.classList.remove('show');
+      feedback.classList.remove('visible');
     }, 2000);
   } catch (err) {
-    console.error('Failed to copy text: ', err);
-    alert('Failed to copy template to clipboard.');
+    console.error('Failed to copy', err);
   }
 }
 
-function renderCards() {
-  const container = document.getElementById('dtr-cards');
-  const focusIdx = getTodaysFocusIndex();
+function renderApp() {
+  const today = new Date();
+  const dateDisplay = document.getElementById('date-display');
+  dateDisplay.textContent = today.toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric'
+  });
 
+  const focusIdx = getTodaysFocusIndex();
+  const focusSection = DTR_SECTIONS[focusIdx];
+  const focusLabel = document.getElementById('focus-label');
+  focusLabel.innerHTML = `Today's focus: <span style="color: var(--color-${focusSection.id === 'new-information' ? 'new-info' : focusSection.id === 'complaints-with-recs' ? 'complaints' : focusSection.id === 'wishes-hopes-dreams' ? 'wishes' : focusSection.id})">${focusSection.emoji} ${focusSection.title}</span>`;
+
+  const cardsContainer = document.getElementById('dtr-cards');
   DTR_SECTIONS.forEach((section, i) => {
     const isFeatured = i === focusIdx;
     
@@ -126,27 +135,10 @@ function renderCards() {
       <p class="card-prompt">"${section.prompts[0]}"</p>
     `;
 
-    container.appendChild(card);
+    cardsContainer.appendChild(card);
   });
-}
 
-function init() {
-  // Set Date Display
-  const today = new Date();
-  const dateStr = today.toLocaleDateString('en-US', {
-    weekday: 'long', month: 'long', day: 'numeric'
-  });
-  document.getElementById('date-display').textContent = dateStr;
-
-  // Set Focus Label
-  const focusIdx = getTodaysFocusIndex();
-  const featuredSection = DTR_SECTIONS[focusIdx];
-  document.getElementById('focus-label').innerHTML = `Today's focus: ${featuredSection.emoji} ${featuredSection.title}`;
-
-  renderCards();
-
-  // Attach Copy Handler
   document.getElementById('copy-btn').addEventListener('click', copyTemplate);
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', renderApp);
